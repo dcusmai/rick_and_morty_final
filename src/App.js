@@ -1,10 +1,14 @@
-import './App.css'
+import './App.css';
 // import Card from './components/Card.jsx' // Esto ya no se va a utilizar
-import Cards from './components/Cards.jsx'
+import Cards from './components/Cards.jsx';
 // import SearchBar from './components/SearchBar.jsx' // Esto ya no se va a utilizar
 // import characters from './data.js' // Sacamos a { Rick } porque ahora traemos a todos los personajes juntos
-import Nav from './components/Nav'
-import { useState } from 'react'
+import Nav from './components/Nav';
+import About from './components/About';
+import Detail from './components/Detail';
+import Error from './components/Error';
+import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 function App () {
   const [characters, setCharacters] = useState([]);
@@ -43,12 +47,21 @@ function App () {
       </div>
       <hr /> */}
       <Nav onSearch={onSearch} />
-      <div>
+      <Routes>
+        <Route path='home'element={<Cards
+          onClose={onClose}
+          characters={characters}
+        />} />
+        <Route path='about' element={<About/>} />
+        <Route path='detail/:detailId' element={<Detail/>} />
+        <Route path=':error' element={<Error/>} />
+      </Routes>
+      {/* <div>
         <Cards
           onClose={onClose}
           characters={characters}
         />
-      </div>
+      </div> */}
       <hr />
       {/* <div> // Esto ya no se va a utilizar
         <SearchBar
