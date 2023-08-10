@@ -7,11 +7,30 @@ import Nav from './components/Nav';
 import About from './components/About';
 import Detail from './components/Detail';
 import Error from './components/Error';
-import { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import Form from './components/Form/Form';
+import { useState, useEffect } from 'react';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+
 
 function App () {
   const [characters, setCharacters] = useState([]);
+  const location = useLocation(); // uso el hook useLocation para obtener la propiedad pathname del obj que retorna y usarla para hacer un rednerizado condicional requerido para el Form.
+  const [access, setAccess] = useState(false);
+  const navigate = useNavigate();
+
+  const username = 'diegocusmai@yahoo.com.ar'; //Con esto simulamos el usuario cargado en un servidor
+  const password = '123asd';
+
+  const login = (userData) => {
+    if(userData.username === username && userData.password === password){
+      setAccess(true);
+      navigate('/home');
+    }
+  }
+
+  useEffect(() => {
+    !access && navigate('/')
+  }, [access, navigate])
 
   const onSearch = (character) => {
     fetch(`https://rickandmortyapi.com/api/character/${character}`)
@@ -46,7 +65,8 @@ function App () {
         />
       </div>
       <hr /> */}
-      <Nav onSearch={onSearch} />
+
+      { location.pathname === '/' ? <Form login={login}/> : <Nav onSearch={onSearch} />} {/* Renderizado condicional: muestra Form o muestra Nav       */}
       <Routes>
         <Route path='home'element={<Cards
           onClose={onClose}
