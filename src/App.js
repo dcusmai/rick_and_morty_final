@@ -8,6 +8,7 @@ import About from './components/About';
 import Detail from './components/Detail';
 import Error from './components/Error';
 import Form from './components/Form/Form';
+import Favorites from './components/Favorites/Favorites';
 import { useState, useEffect } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
@@ -75,6 +76,7 @@ function App () {
         <Route path='about' element={<About/>} />
         <Route path='detail/:detailId' element={<Detail/>} />
         <Route path=':error' element={<Error/>} />
+        <Route path='favorites' element={<Favorites/>} />
       </Routes>
       {/* <div>
         <Cards
