@@ -1,0 +1,78 @@
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("../../../public/universe-sun-rick-and-morty-6ivjgvd9v693bm49.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+	position: absolute;
+	z-index: 1;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 0;
+}
+
+.bienvenidos{
+    color: rgb(76, 186, 255); /* #70e000b2 */
+    font-size: 1.8rem;
+    font-weight: 1000;
+    -webkit-text-stroke: .7px black;
+    font-family: Get Schwifty;
+    text-shadow: 2px 2px 0px rgb(190, 205, 50), -2px -2px 0px rgb(190, 205, 50), 2px -2px 0px rgb(190, 205, 50), -2px 2px 0px rgb(190, 205, 50); 
+    /*text-shadow: 0 0 .5rem rgba(81, 255, 110, 0.461), 0 0 .5rem rgba(81, 255, 110, 0.461), 0 0 1rem rgba(81, 255, 110, 0.461); */
+}
+
+.front{
+    width: 25%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    margin-top: -2rem;
+    margin-bottom: -2rem;
+}
+
+.label{
+    color: #70e000b2;
+    margin-top: .8rem;
+    text-shadow: 0 0 .2rem rgba(0, 0, 0, 0.461), 0 0 .1rem rgba(81, 255, 110, 0.461), 0 0 .8rem rgba(0, 0, 0, 0.461);
+}
+
+.input{
+    width: 10rem;
+    height: 1.2rem;
+    margin-top: .5rem;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    margin-top: .8rem;
+}
+
+.btn button{
+    margin-left: 1rem;
+    border-radius: 5rem;
+    margin-top: .5rem;
+    width: 5rem;
+    height: 2rem;
+    background: linear-gradient(#70e000b2, black);
+    border: transparent;
+    overflow: hidden;
+    transition: 300ms;
+    color: aliceblue;
+    font-weight: 600;
+}
+
+.btn button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    color: aliceblue;
+    background-color: black;
+    box-shadow: 0 0 1rem #70e000b2, 0 0 4rem #70e000b2, 0 0 8rem #70e000b2;
+}

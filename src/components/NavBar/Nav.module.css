@@ -1,0 +1,53 @@
+.nav{
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    border-radius: 999999rem;
+    height: 3rem;
+    background-color: #33ff009b;
+}
+
+.btns{
+    display: flex;
+    margin-right: 5rem;
+    margin-left: 5rem;
+    align-items: center;
+    gap: 2rem;
+}
+
+.btn{
+    color: black;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    align-items: center;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    margin-top: .5rem;
+    width: fit-content;
+    height: 2.2rem;
+    border: transparent;
+    overflow: hidden;
+    transition: 300ms;
+}
+
+.btn::after{
+    content: '';
+    position: absolute;
+    border-bottom: 4px solid black;
+    top: 40%;
+    left: 50%;
+    right: 50%;
+    width: 0%;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    transition: .3s;
+}
+
+.btn:hover::after{
+    left: 0%;
+    right: 0%;
+    width: 100%;
+    margin-top: 1rem;    
+}

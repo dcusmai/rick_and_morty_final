@@ -1,12 +1,12 @@
-import './App.css';
+import "./styles/App/app.css";
 // import Card from './components/Card.jsx' // Esto ya no se va a utilizar
-import Cards from './components/Cards.jsx';
+import Cards from './components/Cards/Cards.jsx';
 // import SearchBar from './components/SearchBar.jsx' // Esto ya no se va a utilizar
 // import characters from './data.js' // Sacamos a { Rick } porque ahora traemos a todos los personajes juntos
-import Nav from './components/Nav';
-import About from './components/About';
-import Detail from './components/Detail';
-import Error from './components/Error';
+import Nav from './components/NavBar/Nav';
+import About from './components/About/About';
+import Detail from './components/Detail/Detail';
+import Error from './components/Error/Error';
 import Form from './components/Form/Form';
 import Favorites from './components/Favorites/Favorites';
 import { useState, useEffect } from 'react';
@@ -55,7 +55,7 @@ function App () {
   }
 
   return (
-    <div className='App' style={{ padding: '25px' }}>
+    <div className='App' style={{ padding: '0px' }}>
       {/* <div> // Esto ya no se va a utilizar
         <Card
           name={Rick.name}
