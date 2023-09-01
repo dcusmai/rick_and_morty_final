@@ -11,7 +11,7 @@ const About = () => {
             </div>
             <h3>Esta App fue desarrollada con fines académicos durante el cursado del bootcamp Fullstack Developer en Henry. Para su desarrollo, se utilizó un stack de tecnología PERN.<p/><br/>Contacto Developer: diegocusmai@yahoo.com.ar o por tel: +54-9-261-5861238</h3>
             <div className={style.front}>
-                <img src="./DiegoDev.png" alt="Foto Diego Dev" width={200} className={style.image}/>
+                <img src="./DiegoDev Fondo RyM.png" alt="Foto Diego Dev" width={200} className={style.image}/>
             </div>
         </div>
     )

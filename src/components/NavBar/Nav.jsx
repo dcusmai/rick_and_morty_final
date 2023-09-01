@@ -22,7 +22,7 @@ const Nav = ({ onSearch }) => {
             </div>
 
             <SearchBar onSearch={onSearch}/>
-            <hr />
+            
         </nav>
     )
 };

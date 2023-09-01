@@ -84,7 +84,7 @@ function App () {
           characters={characters}
         />
       </div> */}
-      <hr />
+      
       {/* <div> // Esto ya no se va a utilizar
         <SearchBar
           onSearch={(characterID) => alert(characterID)}

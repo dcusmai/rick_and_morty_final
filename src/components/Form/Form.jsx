@@ -33,7 +33,7 @@ const Form = ( { login }) => {
     return(
         <form onSubmit={handleSubmit} className={style.form}>
 
-            <audio src="./rick_and_morty_intro.mp3" muted autoPlay loop controls>Tu navegador no admite la etiqueta de audio.</audio>
+            <audio src="./rick_and_morty_intro.mp3" muted autoPlay loop controls style={{marginTop: '-4rem', marginBottom: '2rem'}}>Tu navegador no admite la etiqueta de audio.</audio>
 
             <p className={style.bienvenidos}>Bienvenidos!</p>
 

@@ -1,10 +1,11 @@
 .nav{
     margin-top: 25px;
+    margin-left: .5rem;
     display: flex;
     justify-content: center;
-    border-radius: 999999rem;
-    height: 3rem;
-    background-color: #33ff009b;
+    height: 3rem;    
+    background: linear-gradient(black, #70e000b2, black);
+    width: 100%;    
 }
 
 .btns{
@@ -15,9 +16,30 @@
     gap: 2rem;
 }
 
+.btns button{
+    margin-left: 1rem;
+    border-radius: 5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    width: 5rem;
+    height: 2rem;
+    background: linear-gradient(#70e000b2, black);
+    border: transparent;
+    overflow: hidden;
+    transition: 300ms;
+}
+
+.btns button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    color: aliceblue;
+    background-color: black;
+    box-shadow: 0 0 1rem #70e000b2, 0 0 4rem #70e000b2, 0 0 8rem #70e000b2;
+}
+
 .btn{
-    color: black;
-    font-weight: 800;
+    color: aliceblue;
+    font-weight: 600;
     cursor: pointer;
     position: relative;
     text-decoration: none;
@@ -32,7 +54,7 @@
     transition: 300ms;
 }
 
-.btn::after{
+/* .btn::after{
     content: '';
     position: absolute;
     border-bottom: 4px solid black;
@@ -50,4 +72,4 @@
     right: 0%;
     width: 100%;
     margin-top: 1rem;    
-}
+} */
