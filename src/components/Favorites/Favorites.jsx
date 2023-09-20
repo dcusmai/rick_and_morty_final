@@ -1,15 +1,43 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 import style from './Favorites.module.css'
+import { filterCards, orderCards } from "../../redux/actions";
 
 const Favorites = () => {
-    const { myFavorites } = useSelector(state => state)
+    const dispatch = useDispatch();
+
+    const myFavorites = useSelector(state => state.myFavorites);
+
+    const handleOrder = (event) => {
+        dispatch(orderCards(event.target.value))
+    }
+
+    const handleFilter = (event) => {
+        dispatch(filterCards(event.target.value))
+    }
+
     return(
         <div>
+            <div>
+                <select name="order" onChange={handleOrder} defaultValue="">
+                    <option value="" disabled>Order By</option>
+                    <option value="Ascendente">Ascendente</option>
+                    <option value="Descendente">Descendente</option>
+                </select>
+
+                <select name="filter" onChange={handleFilter} defaultValue="" >
+                    <option value="" disabled>Filter By</option>
+                    <option value="All">All</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Genderless">Genderless</option>
+                    <option value="Unknown">Unknown</option>
+                </select>
+            </div>
             {
-                myFavorites.map((character) =>{
+                myFavorites.map((character, index) =>{
                     return(
-                        <div className={style.card} key={character.id}> {/* Incluyo una key en cada Child para que no se queje React */}
+                        <div className={style.card} key={`${character.id}-${index}`}> {/* Incluyo una key en cada Child para que no se queje React */}
                             <div className={style.front}>
                                 <img  src={character.image} alt={character.name} />
                             </div>
