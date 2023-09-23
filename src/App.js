@@ -76,7 +76,7 @@ function App () {
         <Route path='about' element={<About/>} />
         <Route path='detail/:detailId' element={<Detail/>} />
         <Route path='favorites' element={<Favorites/>} />
-        <Route path="error" element={<Error/> } /> 
+        <Route path=":error" element={<Error/> } /> 
         <Route path="/" element={access ? <navigate to="/home" /> : <Form login={login} />} />
       </Routes>
       {/* <div>
