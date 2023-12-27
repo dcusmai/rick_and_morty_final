@@ -35,8 +35,8 @@ function App () {
 
   const onSearch = (character) => {
     //fetch(`https://rickandmortyapi.com/api/character/${character}`) // Esta consume datos de una API externa. Al tener server en el back ya no la necesitamos
-    //fetch(`http://localhost:3001/rickandmorty/character/${character}`) // Acá se conecta el front con el back. OJO! es http, no https sino me da problema de CORS.
-    fetch(`http://localhost:3001/rickandmorty/onsearch/${character}`)
+    fetch(`http://localhost:3001/rickandmorty/character/${character}`) // Acá se conecta el front con el back. OJO! es http, no https sino me da problema de CORS.
+    //fetch(`http://localhost:3001/rickandmorty/onsearch/${character}`) // Esto lo hizo Dai pero no me funciona si lo pongo así.
       .then((response) => response.json())
       .then((data) => {
         if(data.name) {

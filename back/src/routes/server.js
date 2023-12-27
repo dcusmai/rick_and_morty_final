@@ -39,5 +39,78 @@
 // A partir de acá creamos el servidor usando express. Lo anterior es el Server con Node puro.
 const express = require("express");
 const app = express();
+const axios = require('axios');
+const cors = require('cors');
+
+app.use(cors()); // Middleware que evita problemas de CORS que antes solucionabamos con la linea de 'Access-Control-Allow-Origin' 
+
+app.use(express.json()); //Nuestro middleware para convertir de json las responses. Nuestro cliente espera un objeto de JS, sino usamos el middleware, se envía un json y no lo reconoce.
+
+app.get('/rickandmorty/character/:id', async (req, res) => {
+    
+    try{
+        const { id } = req.params;
+        const response = await axios(`https://rickandmortyapi.com/api/character/${id}`);
+        const data = response.data;
+
+        const infoCharacter = {
+            id: data.id,
+            name: data.name,
+            species: data.species,
+            gender: data.gender,
+            image: data.image
+        }
+
+        res.status(200).json(infoCharacter);
+
+    } catch(error){
+        res.status(404).send(error.message);
+    }
+})
+
+
+app.get('/rickandmorty/detail/:detailId', async (req, res) => {
+
+    try {
+        const { detailId } = req.params;
+        const response = (await axios(`https://rickandmortyapi.com/api/character/${detailId}`)).data; // CIUDADO, tengo que encerrar toda la respuesta que estoy esperando (await) entre () poara luego pedir data, o hacer .data por separado como hice arriba. Si no hago esto, data no encuentra aún la response y devuelve {}.
+        //const { data } = await axios(...) // Otra forma, haciendo directamente destructuring y trayendo solo data de la respuesta
+        
+        const infoCharacterDetail = {
+            //id: response.id,
+            name: response.name,
+            status: response.status,
+            species: response.species,
+            gender: response.gender,
+            origin: response.origin,
+            location: response.location,
+            image: response.image
+        }
+
+        res.status(200).json(infoCharacterDetail);
+
+    } catch(error) {
+        res.status(404).send(error.message)
+    }
+})
+
+
+let fav = []; // fav tiene que ser let, no const, porque lo vamos a estar pisando cada vez que borremos un personaje
+
+app.get('/rickandmorty/fav', (req, res) => {
+    res.status(200).json(fav);
+})
+
+app.post('/rickandmorty/fav', (req, res) => {
+    fav.push(req.body);
+    res.status(200).send('Personaje guardado Ok!')
+})
+
+app.delete('/rickandmorty/fav/:id', (req, res) => {
+    const { id } = req.params;
+    const favFiltered = fav.filter(char => char.id !== parseInt(id));
+    fav = favFiltered;
+    res.status(200).send('Personaje borrado correctamente')
+})
 
 module.exports = app;

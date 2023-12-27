@@ -10,7 +10,7 @@ const Detail = () => {
 
     useEffect(() => {
         // fetch(`https://rickandmortyapi.com/api/character/${detailId}`) // Esta cambia porque ahora no hace las peticiones a una API, sino al back.
-        fetch(`http://localhost:3001/detail/${detailId}`)
+        fetch(`http://localhost:3001/rickandmorty/detail/${detailId}`)
         .then((response) => response.json())
         .then((char) => {
             if(char.name){
