@@ -41,10 +41,21 @@ const express = require("express");
 const app = express();
 const axios = require('axios');
 const cors = require('cors');
+const getAllChars = require('../controllers/getAllChars');
+
 
 app.use(cors()); // Middleware que evita problemas de CORS que antes solucionabamos con la linea de 'Access-Control-Allow-Origin' 
-
 app.use(express.json()); //Nuestro middleware para convertir de json las responses. Nuestro cliente espera un objeto de JS, sino usamos el middleware, se envía un json y no lo reconoce.
+
+app.get('/rickandmorty/allCharacters', async (req, res) => {
+    try {
+        const allCharacters = await getAllChars();
+        res.status(200).json(allCharacters);
+
+    } catch (error) {
+        res.status(404).send('Ups! Hubo un problema')
+    }
+})
 
 app.get('/rickandmorty/character/:id', async (req, res) => {
     
