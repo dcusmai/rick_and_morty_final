@@ -70,6 +70,7 @@ app.get('/rickandmorty/character/:id', async (req, res) => {
         const infoCharacter = {
             id: data.id,
             name: data.name,
+            status: data.status,
             species: data.species,
             gender: data.gender,
             image: data.image
@@ -127,14 +128,20 @@ app.get('/rickandmorty/fav', async (req, res) => {
 
 app.post('/rickandmorty/fav', async (req, res) => {
     //fav.push(req.body);
+    console.log('Solicitud post recibida', req.body);
     try {
         const characterFav = await postFav(req.body);
+        console.log(characterFav);
+        console.log('Enviando POST a:', 'http://localhost:3001/rickandmorty/fav');
+
 
         if(characterFav.error) throw new Error(characterFav.error)
 
         res.status(200).json(characterFav);
+
     } catch (error) {
-        return res.status(404).send(error.message)
+        console.log('error en el servidor', error);
+        return res.status(404).send(error.message);
     }
 })
 

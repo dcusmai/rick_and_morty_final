@@ -2,11 +2,12 @@ const { Favorite } = require('../DB_Conection');
 
 const postFav = async (character) => {
     try {
-        const { name, status, species, gender, origin, image } = character;
+        const { id, name, status, species, gender, origin, image } = character;
         
-        if( !name ||  !status || !species || !gender || !origin || !image  ) throw new Error("Faltan datos obligatorios");
-
+        if( !name || !status || !species || !gender || !image  ) throw new Error("Faltan datos obligatorios");
+            // Saqué del if el || !origin => No me está llegando desde el front. Si lo pongo como requerido, se rompe todo
         const newFav = {
+            id,
             name,
             status,
             species,
@@ -14,10 +15,12 @@ const postFav = async (character) => {
             origin,
             image
         }
-        
-        await Favorite.create(newFav);
+        // await Favorite.create(newFav); Así estaba originalmente. Lo de abajo me lo sugirió ChatGPT
+        // return newFav;
 
-        return newFav;
+        const result = await Favorite.create(newFav);
+        console.log("Resultado de la creación:", result);
+        return result;
 
     } catch (error) {
         return {error: error.message};

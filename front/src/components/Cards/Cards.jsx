@@ -6,12 +6,14 @@ function Cards({ characters, onClose }) { // [{...}, {...}, {...}] characters es
    return (
    <div className={style.container}>
       {
-         characters.map(({id, name, species, gender, image}) => { // el método map recorre cada character (que son objetos dentro del arr characters). Entonces podemos hacer destructuring de las propiedades de character. Antes: characters.map((character) => {...}). Uso map y no forEach, porque map me retorna automáticamente un nuevo array por cada character, en cambio forEach no retorna nada.
+         characters.map(({id, name, status, species, gender, image, origin}) => { // el método map recorre cada character (que son objetos dentro del arr characters). Entonces podemos hacer destructuring de las propiedades de character. Antes: characters.map((character) => {...}). Uso map y no forEach, porque map me retorna automáticamente un nuevo array por cada character, en cambio forEach no retorna nada.
            return <Card
            key={id} 
-           id={id}
+           id={id} // Si no pongo este id, no me guarda el id real en la db, le pone cualquier número.
            name={name} // Si no hubiéramos hecho destructurin, acá debería quedar: name={character.name} y así con todos los demás.
            species={species}
+           status={status}
+           origin={origin}
            gender={gender}
            image={image}
            onClose={() => onClose(id)} // onClose no está en Characters, así que no lo puedo traer, hago una fc acá.

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { addFavorite, deleteFavorite } from '../../redux/actions';
 import style from './Card.module.css';
 
-export default function Card({ name, gender, onClose, species, image, id }) { // Acá Card recibe por párámetro props y hago destructuring. Los valores de estas propiedades le llegan desde App: props --> {name: '', species: '', gender: '', image: '', onClose: fn}
+export default function Card({ name, gender, status, onClose, species, image, id, origin }) { // Acá Card recibe por párámetro props y hago destructuring. Los valores de estas propiedades le llegan desde App: props --> {name: '', species: '', gender: '', image: '', onClose: fn}
    const dispatch = useDispatch();
 
    const myFavorites = useSelector(state => state.myFavorites)
@@ -18,7 +18,7 @@ export default function Card({ name, gender, onClose, species, image, id }) { //
       }
       else{
          setIsFav(true);
-         dispatch(addFavorite({ name, gender, onClose, species, image, id })) // le paso props por destructuring porque así lo puse en Card
+         dispatch(addFavorite({ id, name, gender, status, onClose, species, image, origin })) // le paso props por destructuring porque así lo puse en Card
       }
    }
 

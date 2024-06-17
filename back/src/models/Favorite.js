@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
      },
      origin: {
          type: DataTypes.STRING,
-         allowNull: false
+         //allowNull: false // No me está llegando desde el front. Si lo pongo como requerido, se rompe todo
      },
      image: {
          type: DataTypes.STRING,
